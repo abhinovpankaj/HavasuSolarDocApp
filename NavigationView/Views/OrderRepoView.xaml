@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
     mc:Ignorable="d"
-    d:DesignHeight="800"
+    d:DesignHeight="1800"
     d:DesignWidth="1200">
 
     <Grid>
@@ -24,28 +24,139 @@
                 <!--Form Example-->
                 <Grid Background="{StaticResource ComboBoxItemPointerOverBackgroundThemeBrush }">
                     <RelativePanel>
+                        
                         <StackPanel x:Name="Project" Margin="20">
-                            <TextBox x:Name="ProjectName" Header= "Project Name"
+                            <TextBlock Text="Project Name" Margin="0,4,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            <TextBox x:Name="ProjectName" 
+                                     PlaceholderText= "Project Name"
                                      Text="{Binding ProjectName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                     Margin="0,24,0,0" MaxLength="320" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
-                            <TextBox x:Name="ReferralTo" Header="Referral Paid To"
-                                     Margin="0,24,0,0" MaxLength="50" 
-                                     Text="{Binding ReferralPaidTo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                     Width="400" HorizontalAlignment="Left" InputScope="TelephoneNumber" />
+                                     Margin="0,24,0,0" MaxLength="320" Width="400"
+                                     Height="50" VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Left" InputScope="PersonalFullName"/>
+                            <TextBlock Text="Personal Details" Margin="0,20,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            <TextBox x:Name="name" 
+                                     PlaceholderText="Name"
+                                     Margin="0,16,0,0" MaxLength="50" 
+                                     Text="{Binding Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Width="400" HorizontalAlignment="Left" 
+                                     InputScope="AlphanumericFullWidth" />
+                            <RelativePanel>
+                                <TextBox x:Name="Email" PlaceholderText="Email" Margin="0,24,0,0" Width="250" HorizontalAlignment="Left" InputScope="Text" />
+                                <TextBox x:Name="Phone" PlaceholderText="Phone" Margin="24,24,0,0"  Width="120" RelativePanel.RightOf="Email" InputScope="Number">
+                                    
+                                </TextBox>
+                            </RelativePanel>
                             <TextBox x:Name="Address" Header="Address" PlaceholderText="Address" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="AlphanumericFullWidth" />
                             <TextBox x:Name="Address2" Margin="0,24,0,0" PlaceholderText="Address 2" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="AlphanumericFullWidth" />
                             <RelativePanel>
                                 <TextBox x:Name="City" PlaceholderText="City" Margin="0,24,0,0" MaxLength="50" Width="200" HorizontalAlignment="Left" InputScope="Text" />
                                 <ComboBox x:Name="State" PlaceholderText="State" Margin="24,24,0,0"  Width="100" RelativePanel.RightOf="City">
-                                    <x:String>WA</x:String>
+                                    
                                 </ComboBox>
                             </RelativePanel>
                             <TextBox x:Name="ZipCode" PlaceholderText="Zip Code" Margin="0,24,0,0" MaxLength="6" Width="100" HorizontalAlignment="Left" InputScope="Number" />
                         </StackPanel>
-                        <StackPanel x:Name="Rebate" Margin="20" RelativePanel.RightOf="Project">
-                            <TextBox x:Name="AssociateName" Text="{Binding RebatePaidTo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                     Header= "Rebate Paid To" Margin="0,24,0,0" MaxLength="320" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
-                            <TextBox x:Name="AssociatePhoneNumber" Header="Phone Number" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="TelephoneNumber" />
+                        <StackPanel x:Name="SystemDetails" Margin="20" RelativePanel.RightOf="Project">
+                            <TextBlock Text="System Details" Margin="0,4,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            <RelativePanel>
+                                <TextBox x:Name="SystemWatts" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Header= "System Size Watt" Margin="0,16,0,0"
+                                         MaxLength="20" Width="150" 
+                                         HorizontalAlignment="Left" 
+                                         />
+                                <TextBox x:Name="moduleCount" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Header= "Module Count" Margin="24,16,0,0"
+                                         MaxLength="20" Width="150" RelativePanel.RightOf="SystemWatts" 
+                                         HorizontalAlignment="Left" 
+                                         />
+                            </RelativePanel>
+                            <RelativePanel>
+                                <TextBox x:Name="CostPerwatt" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Header= "Cost Per Watt" Margin="0,24,0,0"
+                                         MaxLength="20" Width="100" 
+                                          
+                                         />
+                                <TextBox x:Name="TotalCost" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Header= "Total Cost" Margin="24,24,0,0"
+                                         MaxLength="20" Width="150" 
+                                         RelativePanel.RightOf="CostPerwatt" 
+                                         />
+                            </RelativePanel>
+                            <RelativePanel>
+                                
+                                <TextBox x:Name="baseRedLine" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Header= "Base Redline" Margin="0,24,0,0"
+                                         MaxLength="20" Width="100" />
+                                <TextBox x:Name="TotalBase" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }"
+                                     Header= "Total Redline" Margin="24,24,0,0"
+                                         MaxLength="20" Width="150" 
+                                         RelativePanel.RightOf="baseRedLine" 
+                                         />
+                                <TextBox x:Name="nickleUp" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Header= "Base Redline" Margin="24,24,0,0"
+                                         RelativePanel.RightOf="TotalBase"
+                                         MaxLength="20" Width="100" />
+                                <TextBox x:Name="TotalNickle" Text="{Binding SystemWatts,
+                                    Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Header= "Total Nickle" Margin="24,24,0,0"
+                                         MaxLength="20" Width="150" 
+                                         RelativePanel.RightOf="nickleUp" 
+                                         />
+                            </RelativePanel>
+                            <TextBlock Text="Adders" Margin="0,20,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            <RelativePanel>
+                                <TextBox x:Name="tripChrge" Text="{Binding SystemWatts,
+                                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                    Header= "Trip Charge" Margin="0,16,0,0"
+                                        MaxLength="20" Width="100" 
+                                          
+                                        />
+                                <TextBox x:Name="tripChargeComment" Text="{Binding SystemWatts,
+                                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                    Header= "Comments" Margin="24,16,0,0"
+                                        Width="350" 
+                                        RelativePanel.RightOf="tripChrge" 
+                                        />
+                                
+                            </RelativePanel>
+                            <RelativePanel>
+                                <TextBox x:Name="mpu" Text="{Binding SystemWatts,
+                                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                    Header= "MPU" Margin="0,16,0,0"
+                                        MaxLength="20" Width="100" 
+                                          
+                                        />
+                                <TextBox x:Name="400AMP" Text="{Binding SystemWatts,
+                                Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                    Header= "400 AMP" Margin="24,16,0,0"
+                                        Width="300" 
+                                        RelativePanel.RightOf="mpu" 
+                                        />
+
+                            </RelativePanel>
+                            <TextBox x:Name="derateMain" Header="De-Rate Main" 
+                                     Margin="0,24,0,0" MaxLength="50"
+                                     Width="250" HorizontalAlignment="Left" 
+                                     InputScope="TelephoneNumber" />
+                            <RelativePanel>
+                                
+                                <TextBox x:Name="flatroof" Header="Flat Roof Attachment" 
+                                     Margin="0,24,0,0" MaxLength="50"
+                                     Width="250" HorizontalAlignment="Left" 
+                                     InputScope="TelephoneNumber" />
+                                <TextBox x:Name="permodule" PlaceholderText="Per Module" 
+                                     Margin="24,44,0,0" MaxLength="50"
+                                     Width="150" RelativePanel.RightOf="flatroof" 
+                                     InputScope="TelephoneNumber" />
+                            </RelativePanel>
+                            
                             <DatePicker x:Name="TargetInstallDate" 
                                         Windows10version1809:SelectedDate="{Binding InstallDate}"
                                         Header="Project Install Date" HorizontalAlignment="Left" Margin="0,24,0,0"></DatePicker>
