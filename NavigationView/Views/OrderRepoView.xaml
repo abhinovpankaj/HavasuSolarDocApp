@@ -141,6 +141,7 @@
                                         />
 
                             </RelativePanel>
+                            
                             <TextBox x:Name="derateMain" Header="De-Rate Main" 
                                      Margin="0,24,0,0" MaxLength="50"
                                      Width="250" HorizontalAlignment="Left" 
@@ -156,13 +157,49 @@
                                      Width="150" RelativePanel.RightOf="flatroof" 
                                      InputScope="TelephoneNumber" />
                             </RelativePanel>
+                            <RelativePanel>
+                                <TextBox x:Name="smallSystemSize" Header="Small System Size (&lt; 15 panels)" 
+                                     Margin="0,24,0,0" MaxLength="50"
+                                     Width="250" HorizontalAlignment="Left" 
+                                     InputScope="TelephoneNumber" />
+                                <TextBox x:Name="dedicatedTransformer" Header="Dedicated Transformer" 
+                                     Margin="24,24,0,0" MaxLength="50"
+                                     Width="250" RelativePanel.RightOf="smallSystemSize" 
+                                     InputScope="TelephoneNumber" />
+                            </RelativePanel>
+                            <RelativePanel>
+                                <TextBox x:Name="utilityServiceFee" Header="MEC Utility Service Fee" 
+                                     Margin="0,24,0,0" MaxLength="50"
+                                     Width="250" HorizontalAlignment="Left" 
+                                     InputScope="TelephoneNumber" />
+                                <TextBox x:Name="groundMount" Header="Ground Mount" 
+                                     Margin="24,24,0,0" MaxLength="50" Text="By Quote Only"
+                                     Width="250" RelativePanel.RightOf="utilityServiceFee" 
+                                     InputScope="AlphanumericFullWidth" />
+                            </RelativePanel>
+                            <RelativePanel>
+                                <TextBox x:Name="trenching" Header="Trenching" 
+                                     Margin="0,24,0,0" MaxLength="50"
+                                     Width="250" HorizontalAlignment="Left" 
+                                     InputScope="TelephoneNumber" />
+                                <TextBox x:Name="rateTrensching" Header="Rate" 
+                                     Margin="24,24,0,0" MaxLength="50" Text="$20/Ft"
+                                     Width="250" RelativePanel.RightOf="trenching" 
+                                     InputScope="AlphanumericFullWidth" />
+                                <TextBlock Text="Dig, Conduit ;amp Wire" 
+                                           Margin="4,50,0,0" VerticalAlignment="Center"
+                                           RelativePanel.RightOf="rateTrensching"/>
+                            </RelativePanel>
+                            <TextBox x:Name="OtherComm" Header="Other" 
+                                     PlaceholderText="Comments"
+                                     Margin="0,24,0,0" MaxLength="500"
+                                     Width="450" HorizontalAlignment="Left" 
+                                     InputScope="AlphanumericFullWidth" />
+
                             
-                            <DatePicker x:Name="TargetInstallDate" 
-                                        Windows10version1809:SelectedDate="{Binding InstallDate}"
-                                        Header="Project Install Date" HorizontalAlignment="Left" Margin="0,24,0,0"></DatePicker>
-                            <TimePicker x:Name="InstallTime" Header="Project Install Time" 
-                                        Windows10version1809:SelectedTime="{Binding InstallTime}"
-                                        HorizontalAlignment="Left" Margin="0,24,0,0"></TimePicker>
+                        </StackPanel>
+                        <StackPanel x:Name="Calculations" Margin="20" RelativePanel.Below="Project">
+                            
                         </StackPanel>
                     </RelativePanel>
                 </Grid>
