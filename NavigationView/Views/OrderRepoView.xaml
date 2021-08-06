@@ -22,17 +22,25 @@
             
             <PivotItem Header="Input Fields" Margin="0">
                 <!--Form Example-->
-                <Grid Background="{StaticResource ComboBoxItemPointerOverBackgroundThemeBrush }">
+                <ScrollViewer>
+                    <Grid Background="{StaticResource ComboBoxItemPointerOverBackgroundThemeBrush }" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <RelativePanel>
                         
                         <StackPanel x:Name="Project" Margin="20">
                             <TextBlock Text="Project Name" Margin="0,4,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                            
                             <TextBox x:Name="ProjectName" 
                                      PlaceholderText= "Project Name"
                                      Text="{Binding ProjectName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      Margin="0,24,0,0" MaxLength="320" Width="400"
                                      Height="50" VerticalContentAlignment="Center"
                                      HorizontalAlignment="Left" InputScope="PersonalFullName"/>
+                            <TextBox x:Name="CRMId" 
+                                     PlaceholderText= "CRM ID" Header="CRM ID"
+                                     Text="{Binding CRMId, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Margin="0,24,0,0" MaxLength="320" Width="400"
+                                     Height="50" VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Left" />
                             <TextBlock Text="Personal Details" Margin="0,20,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
                             <TextBox x:Name="name" 
                                      PlaceholderText="Name"
@@ -59,13 +67,13 @@
                         <StackPanel x:Name="SystemDetails" Margin="20" RelativePanel.RightOf="Project">
                             <TextBlock Text="System Details" Margin="0,4,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
                             <RelativePanel>
-                                <TextBox x:Name="SystemWatts" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="SystemWatts" Text="{Binding SystemSizeWatt,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      Header= "System Size Watt" Margin="0,16,0,0"
                                          MaxLength="20" Width="150" 
                                          HorizontalAlignment="Left" 
                                          />
-                                <TextBox x:Name="moduleCount" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="moduleCount" Text="{Binding ModuleCount,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      Header= "Module Count" Margin="24,16,0,0"
                                          MaxLength="20" Width="150" RelativePanel.RightOf="SystemWatts" 
@@ -73,13 +81,13 @@
                                          />
                             </RelativePanel>
                             <RelativePanel>
-                                <TextBox x:Name="CostPerwatt" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="CostPerwatt" Text="{Binding CostPerWatt,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      Header= "Cost Per Watt" Margin="0,24,0,0"
                                          MaxLength="20" Width="100" 
                                           
                                          />
-                                <TextBox x:Name="TotalCost" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="TotalCost" Text="{Binding PurchaseCost,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      Header= "Total Cost" Margin="24,24,0,0"
                                          MaxLength="20" Width="150" 
@@ -87,23 +95,23 @@
                                          />
                             </RelativePanel>
                             <RelativePanel>
-                                
-                                <TextBox x:Name="baseRedLine" Text="{Binding SystemWatts,
+
+                                    <TextBox x:Name="baseRedLine" Text="{Binding BaseRedLine,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      Header= "Base Redline" Margin="0,24,0,0"
                                          MaxLength="20" Width="100" />
-                                <TextBox x:Name="TotalBase" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="TotalBase" Text="{Binding RedLineCost,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }"
                                      Header= "Total Redline" Margin="24,24,0,0"
                                          MaxLength="20" Width="150" 
                                          RelativePanel.RightOf="baseRedLine" 
                                          />
-                                <TextBox x:Name="nickleUp" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="nickleUp" Text="{Binding NickleUp,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                     Header= "Base Redline" Margin="24,24,0,0"
+                                     Header= "Nickle Value" Margin="24,24,0,0"
                                          RelativePanel.RightOf="TotalBase"
                                          MaxLength="20" Width="100" />
-                                <TextBox x:Name="TotalNickle" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="TotalNickle" Text="{Binding NickleValue,
                                     Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                      Header= "Total Nickle" Margin="24,24,0,0"
                                          MaxLength="20" Width="150" 
@@ -112,7 +120,7 @@
                             </RelativePanel>
                             <TextBlock Text="Adders" Margin="0,20,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
                             <RelativePanel>
-                                <TextBox x:Name="tripChrge" Text="{Binding SystemWatts,
+                                    <TextBox x:Name="tripChrge" Text="{Binding TripCharge,
                                 Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                     Header= "Trip Charge" Margin="0,16,0,0"
                                         MaxLength="20" Width="100" 
@@ -127,13 +135,13 @@
                                 
                             </RelativePanel>
                             <RelativePanel>
-                                <TextBox x:Name="mpu" Text="{Binding SystemWatts,
+                                <TextBox x:Name="mpu" Text="{Binding MPU,
                                 Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                     Header= "MPU" Margin="0,16,0,0"
                                         MaxLength="20" Width="100" 
                                           
                                         />
-                                <TextBox x:Name="400AMP" Text="{Binding SystemWatts,
+                                <TextBox x:Name="AMP" Text="{Binding SystemWatts,
                                 Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                     Header= "400 AMP" Margin="24,16,0,0"
                                         Width="300" 
@@ -143,33 +151,36 @@
                             </RelativePanel>
                             
                             <TextBox x:Name="derateMain" Header="De-Rate Main" 
-                                     Margin="0,24,0,0" MaxLength="50"
+                                     Margin="0,24,0,0" MaxLength="50" Text="{Binding DerateMain}"
                                      Width="250" HorizontalAlignment="Left" 
                                      InputScope="TelephoneNumber" />
                             <RelativePanel>
                                 
                                 <TextBox x:Name="flatroof" Header="Flat Roof Attachment" 
-                                     Margin="0,24,0,0" MaxLength="50"
+                                     Margin="0,24,0,0" MaxLength="50" Text="{Binding FlatRoofAttachmnetValue}"
                                      Width="250" HorizontalAlignment="Left" 
                                      InputScope="TelephoneNumber" />
                                 <TextBox x:Name="permodule" PlaceholderText="Per Module" 
-                                     Margin="24,44,0,0" MaxLength="50"
+                                     Margin="24,44,0,0" MaxLength="50" 
                                      Width="150" RelativePanel.RightOf="flatroof" 
                                      InputScope="TelephoneNumber" />
                             </RelativePanel>
                             <RelativePanel>
                                 <TextBox x:Name="smallSystemSize" Header="Small System Size (&lt; 15 panels)" 
                                      Margin="0,24,0,0" MaxLength="50"
+                                         Text="{Binding SmallSystemSize}"
                                      Width="250" HorizontalAlignment="Left" 
                                      InputScope="TelephoneNumber" />
                                 <TextBox x:Name="dedicatedTransformer" Header="Dedicated Transformer" 
                                      Margin="24,24,0,0" MaxLength="50"
+                                         Text="{Binding DedicatedTransformer}"
                                      Width="250" RelativePanel.RightOf="smallSystemSize" 
                                      InputScope="TelephoneNumber" />
                             </RelativePanel>
                             <RelativePanel>
                                 <TextBox x:Name="utilityServiceFee" Header="MEC Utility Service Fee" 
                                      Margin="0,24,0,0" MaxLength="50"
+                                         Text="{Binding MECUtilityFees}"
                                      Width="250" HorizontalAlignment="Left" 
                                      InputScope="TelephoneNumber" />
                                 <TextBox x:Name="groundMount" Header="Ground Mount" 
@@ -180,7 +191,8 @@
                             <RelativePanel>
                                 <TextBox x:Name="trenching" Header="Trenching" 
                                      Margin="0,24,0,0" MaxLength="50"
-                                     Width="250" HorizontalAlignment="Left" 
+                                     Width="250" HorizontalAlignment="Left"
+                                         Text="{Binding Trenching}"
                                      InputScope="TelephoneNumber" />
                                 <TextBox x:Name="rateTrensching" Header="Rate" 
                                      Margin="24,24,0,0" MaxLength="50" Text="$20/Ft"
@@ -198,11 +210,124 @@
 
                             
                         </StackPanel>
-                        <StackPanel x:Name="Calculations" Margin="20" RelativePanel.Below="Project">
+                        <StackPanel x:Name="Calculations" Margin="20" 
+                                    RelativePanel.Below="SystemDetails">
+                            <Rectangle Fill="White" Height="2" Width="1600"/>
+                            <TextBlock Text="Calculations" Margin="0,4,0,0" Style="{StaticResource SubheaderTextBlockStyle}"/>
                             
-                        </StackPanel>
+                                <RelativePanel>
+                                    <TextBox x:Name="readline" Header="Readline"
+                                     FontWeight="Bold" FontSize="20"
+                                     Margin="0,24,0,0" Width="250" 
+                                     Text="{Binding RedlineValue}"
+                                     HorizontalAlignment="Left" InputScope="Text" />
+                                    <StackPanel RelativePanel.RightOf="readline" HorizontalAlignment="Right"
+                                                Orientation="Horizontal" Margin="50,0,0,0"
+                                                Background="{ThemeResource SystemControlAccentAcrylicWindowAccentMediumHighBrush}">
+                                        <TextBox x:Name="advance" Header="Advance"
+                                     FontWeight="Bold" FontSize="20"  Text="{Binding AdvanceCost}"
+                                     Margin="20,24,0,24" Width="250" 
+                                     HorizontalAlignment="Left" InputScope="Text" />
+                                        <TextBox x:Name="balance" Header="Balance"
+                                     FontWeight="Bold" FontSize="20"  Text="{Binding Balance}"
+                                     Margin="40,24,20,24" Width="250" 
+                                     HorizontalAlignment="Left" InputScope="Text" />
+                                    </StackPanel>
+                                </RelativePanel>
+                                <TextBlock Text="EPC (Titan Settlement)"
+                                               Margin="0,8,0,0" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                <RelativePanel>
+                                <TextBlock x:Name="dealerFee"
+                                           Text="Dealer Fee"
+                                     FontWeight="Bold" FontSize="22"
+                                     Margin="0,48,0,0" Width="250" 
+                                           VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"  />
+                                <TextBox x:Name="percentage" Header="Dealer Perc."
+                                     FontWeight="Bold" FontSize="20"
+                                          Text="{Binding DealerPerc}"
+                                     Margin="24,24,0,0" Width="250" 
+                                     RelativePanel.RightOf="dealerFee"  />
+                                <TextBox x:Name="dealer" Header="Total"
+                                     FontWeight="Bold" FontSize="20"
+                                          Text="{Binding DealerFee}"
+                                     Margin="24,24,0,0" Width="250" 
+                                     RelativePanel.RightOf="percentage"  />
+                            </RelativePanel>
+                            
+                            <TextBlock Text="Havasu Solar Redline" Margin="0,8,0,0" 
+                                       FontSize="22"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <TextBlock Text="Customer Deal Price" Margin="0,8,0,0" 
+                                       Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <RelativePanel>
+                                <TextBlock x:Name="costofAq"
+                                           Text="Cost of Acquisition"
+                                     FontWeight="Bold" FontSize="22"
+                                     Margin="0,48,0,0" Width="250" 
+                                           VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"  />
+                                <TextBox x:Name="aqValue" Header="Aquisition Value"
+                                     FontWeight="Bold" FontSize="20" Text="{Binding Acquisiton}"
+                                     Margin="24,24,0,0" Width="250" 
+                                     RelativePanel.RightOf="costofAq"  />
+                                <TextBox x:Name="aqCalculated" Header="Total"
+                                     FontWeight="Bold" FontSize="20" Text="{Binding AcquisitionCost}"
+                                     Margin="24,24,0,0" Width="250" 
+                                     RelativePanel.RightOf="aqValue"  />
+                                <TextBox x:Name="phoneCost" Header="Phone Team Cost"
+                                     FontWeight="Bold" FontSize="20"
+                                     Margin="24,24,0,0" Width="250" 
+                                     RelativePanel.RightOf="aqCalculated"  />
+                                </RelativePanel>
+                            <RelativePanel>
+                                <TextBlock x:Name="qFee"
+                                           Text="Quote Fee"
+                                      FontSize="22" 
+                                     Margin="0,58,0,0" Width="100" 
+                                           VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"  />
+                                <TextBox x:Name="quoteValue" Header="Quote Value"
+                                     FontWeight="Bold" FontSize="20" Text="{Binding QFee}"
+                                     Margin="24,24,0,0" Width="250" 
+                                     RelativePanel.RightOf="qFee"  />
+                                <TextBox x:Name="quoteTotal" Header="Total"
+                                     FontWeight="Bold" FontSize="20"
+                                     Margin="4,24,0,0" Width="250" Text="{Binding QuotationFees}"
+                                     RelativePanel.RightOf="quoteValue"  />
+                                    <RelativePanel RelativePanel.RightOf="quoteTotal">
+                                        <TextBlock x:Name="leadCost"
+                                           Text="Lead Cost"
+                                          FontSize="22"
+                                         Margin="20,58,0,0" Width="100" 
+                                               VerticalAlignment="Center"
+                                         HorizontalAlignment="Left"  />
+                                        <TextBox x:Name="leadValue" Header="Lead Value"
+                                         FontWeight="Bold" FontSize="20" Text="{Binding LCost }"
+                                         Margin="24,24,0,0" Width="250" 
+                                         RelativePanel.RightOf="leadCost"  />
+                                        <TextBox x:Name="leadTotal" Header="Total"
+                                         FontWeight="Bold" FontSize="20" Text="{Binding LeadCost }"
+                                         Margin="4,24,0,0" Width="250" 
+                                         RelativePanel.RightOf="leadValue"  />
+                                    </RelativePanel>
+                            </RelativePanel>
+                                <RelativePanel>
+                                    <TextBlock Text="Rep Commission" Margin="0,20"
+                                       FontWeight="Bold" FontSize="22"
+                                       Padding="4" x:Name="repCommi"
+                                       Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    <TextBox x:Name="repComm"
+                                     FontWeight="Bold" FontSize="20" Text="{Binding RepCommision}"
+                                     Margin="24,24,0,0" Width="250" 
+                                     RelativePanel.RightOf="repCommi"  />
+                                </RelativePanel>
+                                
+                            
+                            </StackPanel>
                     </RelativePanel>
                 </Grid>
+                </ScrollViewer>
             </PivotItem>
             <PivotItem Header="Document" Margin="0">
                 <Grid>
@@ -211,8 +336,9 @@
                                />
                 </Grid>
             </PivotItem>
-            <PivotItem Header="Details"/>
-            <PivotItem Header="PlaceHolder..."/>
+            
+            <PivotItem Header="Commission Report"/>
+            
             <Pivot.RightHeader>
                 <CommandBar OverflowButtonVisibility="Collapsed" Background="Transparent">
                     <AppBarButton Icon="Send" ToolTipService.ToolTip="Generate Document"
